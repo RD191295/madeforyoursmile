@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import confetti from "canvas-confetti";
-import { Heart, Sparkles, Gift, ArrowDown, Star, Quote } from "lucide-react";
+import { Heart, Sparkles, Gift, ArrowDown, Star, Quote, MapPin, Clock, Calendar, MessageCircle, Phone, Coffee, Cake, Moon } from "lucide-react";
 
 import { Particles } from "@/components/Particles";
 import { MusicToggle } from "@/components/MusicToggle";
@@ -213,68 +213,167 @@ function Admire() {
 /* ---------- JOURNEY ---------- */
 const JOURNEY = [
   {
-    when: "The first message",
-    title: "Hello, stranger",
-    text: "Two careful introductions and a feeling that this conversation might be different. I remember reading your reply twice.",
+    icon: Heart,
+    date: "17 May 2026",
+    time: "11:30 AM",
+    place: "Sarthi Savvy, Hinjawadi, Pune",
+    title: "First Conversation",
+    text: "Our first time meeting. The beginning of something unexpectedly beautiful.",
   },
   {
-    when: "The first long call",
-    title: "Hours that felt like minutes",
-    text: "We spoke about families, dreams, small fears. You laughed at something silly I said and I knew I wanted to hear it again.",
+    icon: MessageCircle,
+    date: "20 May 2026",
+    time: null,
+    place: "WhatsApp",
+    title: "First Chat",
+    text: "Our small chat — the beginning of knowing each other.",
   },
   {
-    when: "Somewhere in between",
-    title: "Becoming familiar",
-    text: "Good mornings, small updates, photos of ordinary days. Slowly, you became the first thought of my mornings.",
+    icon: Sparkles,
+    date: "20 May 2026",
+    time: null,
+    place: "Daily Chats",
+    title: "Getting Comfortable",
+    text: "Conversations slowly became part of everyday life.",
   },
   {
-    when: "Today",
-    title: "Your birthday",
-    text: "I am still getting to know you, gently and respectfully — and already, your day matters to me.",
+    icon: Phone,
+    date: "21 May 2026",
+    time: "10:59 PM",
+    place: "Over the call",
+    title: "Our First Call",
+    text: "A small 31-minute conversation that felt quietly special. There was a comfort in that night I didn't expect.",
+  },
+  {
+    icon: Coffee,
+    date: "23 May 2026",
+    time: "2:00 PM",
+    place: "Café Coffee Day, Navi Mumbai",
+    title: "Second Meeting",
+    text: "Almost two hours together — so many thoughts shared, so many things spoken. Time moved so quietly it didn't feel like two hours at all.",
+  },
+  {
+    icon: Moon,
+    date: "28 May 2026",
+    time: "12:27 AM",
+    place: "Over the call",
+    title: "A Late-Night Conversation",
+    text: "Almost an hour late at night, talking about everything and nothing. Little conversations like this slowly make the bond feel stronger.",
+  },
+  {
+    icon: Cake,
+    date: "28 May 2026",
+    time: "Today",
+    place: "Your Special Day",
+    title: "Birthday Surprise",
+    text: "A small effort to make you smile today, on your special day.",
   },
 ];
 
 function Journey() {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start center", "end center"],
+  });
+  const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
+
   return (
-    <section className="relative px-6 py-28 sm:py-36">
+    <section className="relative overflow-hidden px-6 py-28 sm:py-36">
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute left-1/2 top-1/3 h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-[color:var(--color-rose)]/25 blur-[120px]" />
+        <div className="absolute left-1/4 bottom-1/4 h-[320px] w-[320px] rounded-full bg-[color:var(--color-lavender)]/30 blur-[120px]" />
+      </div>
+
       <SectionHeader
         eyebrow="Our little story"
         title="From the first hello"
         sub="to this quiet, lovely today"
       />
 
-      <div className="relative mx-auto mt-16 max-w-3xl">
-        <div className="absolute left-4 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-[color:var(--color-mauve)]/40 to-transparent sm:left-1/2" />
+      <div ref={ref} className="relative mx-auto mt-20 max-w-5xl">
+        {/* Base line */}
+        <div className="absolute left-5 top-0 bottom-0 w-[2px] bg-gradient-to-b from-transparent via-[color:var(--color-mauve)]/20 to-transparent sm:left-1/2 sm:-translate-x-1/2" />
+        {/* Animated glowing progress line */}
+        <motion.div
+          style={{ height: lineHeight }}
+          className="absolute left-5 top-0 w-[2px] bg-gradient-to-b from-[color:var(--color-rose)] via-[color:var(--color-gold)] to-[color:var(--color-mauve)] shadow-[0_0_18px_rgba(212,175,106,0.55)] sm:left-1/2 sm:-translate-x-1/2"
+        />
 
-        {JOURNEY.map((item, i) => (
-          <motion.div
-            key={item.title}
-            initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.8, delay: i * 0.1 }}
-            className={`relative mb-10 flex sm:mb-14 ${
-              i % 2 === 0 ? "sm:justify-start" : "sm:justify-end"
-            }`}
-          >
-            <div className="absolute left-4 top-6 -translate-x-1/2 sm:left-1/2">
-              <div className="h-3 w-3 rounded-full bg-[color:var(--color-gold)] shadow-[0_0_0_6px_rgba(212,175,106,0.18)]" />
-            </div>
-            <div
-              className={`glass ml-10 w-full rounded-2xl p-6 sm:ml-0 sm:w-[46%] ${
-                i % 2 === 0 ? "sm:mr-auto sm:pr-8" : "sm:ml-auto sm:pl-8"
+        {JOURNEY.map((item, i) => {
+          const Icon = item.icon;
+          const leftSide = i % 2 === 0;
+          return (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{ duration: 0.9, delay: 0.05, ease: [0.22, 1, 0.36, 1] }}
+              className={`relative mb-14 flex sm:mb-20 ${
+                leftSide ? "sm:justify-start" : "sm:justify-end"
               }`}
             >
-              <p className="text-[11px] font-medium uppercase tracking-[0.2em] text-[color:var(--color-mauve)]">
-                {item.when}
-              </p>
-              <h3 className="mt-2 font-serif text-2xl font-medium">{item.title}</h3>
-              <p className="mt-2 text-[15px] leading-relaxed text-[color:var(--color-ink-soft)]">
-                {item.text}
-              </p>
-            </div>
-          </motion.div>
-        ))}
+              {/* Node */}
+              <div className="absolute left-5 top-7 -translate-x-1/2 sm:left-1/2">
+                <motion.div
+                  initial={{ scale: 0 }}
+                  whileInView={{ scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.2, type: "spring" }}
+                  className="relative"
+                >
+                  <span className="absolute inset-0 -m-3 rounded-full bg-[color:var(--color-gold)]/30 blur-md animate-pulse" />
+                  <span className="relative flex h-11 w-11 items-center justify-center rounded-full bg-gradient-to-br from-[color:var(--color-cream)] to-white text-[color:var(--color-mauve)] shadow-[0_0_0_4px_rgba(212,175,106,0.18),0_10px_30px_-10px_rgba(58,47,63,0.4)] ring-1 ring-[color:var(--color-gold)]/40">
+                    <Icon size={16} />
+                  </span>
+                </motion.div>
+              </div>
+
+              {/* Card */}
+              <motion.div
+                whileHover={{ y: -6 }}
+                transition={{ type: "spring", stiffness: 300, damping: 22 }}
+                className={`glass group relative ml-16 w-full overflow-hidden rounded-2xl p-6 sm:ml-0 sm:w-[44%] sm:p-7 ${
+                  leftSide ? "sm:mr-auto sm:text-right" : "sm:ml-auto sm:text-left"
+                }`}
+              >
+                <div className="pointer-events-none absolute -inset-px rounded-2xl bg-gradient-to-br from-[color:var(--color-rose)]/0 via-[color:var(--color-gold)]/0 to-[color:var(--color-lavender)]/0 opacity-0 transition-opacity duration-500 group-hover:opacity-100 group-hover:from-[color:var(--color-rose)]/15 group-hover:via-[color:var(--color-gold)]/15 group-hover:to-[color:var(--color-lavender)]/15" />
+                <div
+                  className={`relative flex flex-wrap items-center gap-x-4 gap-y-1.5 text-[11px] font-medium uppercase tracking-[0.18em] text-[color:var(--color-ink-soft)] ${
+                    leftSide ? "sm:justify-end" : "sm:justify-start"
+                  }`}
+                >
+                  <span className="inline-flex items-center gap-1.5 text-[color:var(--color-mauve)]">
+                    <Calendar size={12} /> {item.date}
+                  </span>
+                  {item.time && (
+                    <span className="inline-flex items-center gap-1.5">
+                      <Clock size={12} /> {item.time}
+                    </span>
+                  )}
+                </div>
+
+                <h3 className="relative mt-3 font-serif text-2xl font-medium leading-snug text-[color:var(--color-ink)] sm:text-[26px]">
+                  {item.title}
+                </h3>
+
+                <p
+                  className={`relative mt-2 inline-flex items-start gap-1.5 text-[12.5px] text-[color:var(--color-ink-soft)]/85 ${
+                    leftSide ? "sm:justify-end" : ""
+                  }`}
+                >
+                  <MapPin size={12} className="mt-[3px] shrink-0 text-[color:var(--color-gold)]" />
+                  <span className="italic">{item.place}</span>
+                </p>
+
+                <p className="relative mt-4 text-[15px] leading-relaxed text-[color:var(--color-ink-soft)]">
+                  {item.text}
+                </p>
+              </motion.div>
+            </motion.div>
+          );
+        })}
       </div>
     </section>
   );
