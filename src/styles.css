@@ -1,0 +1,91 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-serif: "Cormorant Garamond", ui-serif, Georgia, serif;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-script: "Dancing Script", cursive;
+
+  --color-cream: #fdf8f3;
+  --color-blush: #fce7f0;
+  --color-rose: #f5c6d6;
+  --color-lavender: #e9def8;
+  --color-mauve: #c9a7d4;
+  --color-gold: #d4af6a;
+  --color-ink: #3a2f3f;
+  --color-ink-soft: #6b5e72;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-border: var(--border);
+}
+
+:root {
+  --radius: 0.75rem;
+  --background: #fdf8f3;
+  --foreground: #3a2f3f;
+  --border: rgba(58, 47, 63, 0.08);
+}
+
+@layer base {
+  * { border-color: var(--color-border); }
+  html, body {
+    background:
+      radial-gradient(60% 50% at 80% 0%, rgba(245, 198, 214, 0.55) 0%, transparent 70%),
+      radial-gradient(50% 50% at 0% 30%, rgba(233, 222, 248, 0.6) 0%, transparent 65%),
+      radial-gradient(60% 60% at 50% 100%, rgba(212, 175, 106, 0.18) 0%, transparent 70%),
+      #fdf8f3;
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    overflow-x: hidden;
+  }
+}
+
+@layer utilities {
+  .font-serif { font-family: var(--font-serif); }
+  .font-script { font-family: var(--font-script); }
+  .text-balance { text-wrap: balance; }
+
+  .glass {
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(20px) saturate(140%);
+    -webkit-backdrop-filter: blur(20px) saturate(140%);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow:
+      0 1px 0 rgba(255, 255, 255, 0.8) inset,
+      0 20px 50px -20px rgba(201, 167, 212, 0.35);
+  }
+
+  .glass-dark {
+    background: rgba(58, 47, 63, 0.6);
+    backdrop-filter: blur(16px) saturate(150%);
+    -webkit-backdrop-filter: blur(16px) saturate(150%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+  }
+
+  .text-gold-gradient {
+    background: linear-gradient(135deg, #d4af6a 0%, #f5e1a4 50%, #c9a7d4 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+@keyframes blink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+.caret::after {
+  content: "|";
+  display: inline-block;
+  margin-left: 2px;
+  color: #c9a7d4;
+  animation: blink 1s steps(1) infinite;
+}
