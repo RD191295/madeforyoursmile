@@ -91,7 +91,7 @@ function Hero() {
           Happy Birthday,
           <br />
           <span className="font-script text-gold-gradient text-6xl sm:text-8xl md:text-9xl">
-            beautiful soul
+            Urvi
           </span>
         </motion.h1>
 
@@ -342,11 +342,11 @@ function Letter() {
         className="glass relative mx-auto mt-16 max-w-2xl rounded-[28px] p-8 sm:p-14"
       >
         <div className="absolute -top-4 left-8 rounded-full bg-[color:var(--color-cream)] px-4 py-1 text-[10px] font-medium uppercase tracking-[0.3em] text-[color:var(--color-mauve)] shadow-sm">
-          For you
+          For Urvi
         </div>
 
         <p className="font-script text-3xl text-[color:var(--color-mauve)] sm:text-4xl">
-          Dear you,
+          Dear Urvi,
         </p>
 
         <div className="mt-6 space-y-5 font-serif text-[17px] leading-[1.85] text-[color:var(--color-ink)] sm:text-lg">
