@@ -7,6 +7,11 @@ import { Heart, Sparkles, Gift, ArrowDown, Star, Quote, MapPin, Clock, Calendar,
 import { Particles } from "@/components/Particles";
 import { MusicToggle } from "@/components/MusicToggle";
 import { TypeWriter } from "@/components/TypeWriter";
+import { LoadingScreen } from "@/components/LoadingScreen";
+import { ScrollProgress } from "@/components/ScrollProgress";
+import { DynamicBackground } from "@/components/DynamicBackground";
+import { StarField } from "@/components/StarField";
+import { VoiceMessage } from "@/components/VoiceMessage";
 
 import mem1 from "@/assets/memory-1.jpg";
 import mem2 from "@/assets/memory-2.jpg";
@@ -44,14 +49,36 @@ export const Route = createFileRoute("/")({
 function Page() {
   return (
     <main className="relative min-h-screen text-[color:var(--color-ink)]">
+      <LoadingScreen />
+      <DynamicBackground />
+      <ScrollProgress />
       <MusicToggle />
       <Hero />
+      <SectionFade />
       <Admire />
+      <SectionFade />
       <Journey />
+      <SectionFade />
+      <VoiceMessage />
+      <SectionFade />
       <Gallery />
+      <SectionFade />
       <Letter />
+      <SectionFade />
+      <StarField />
+      <SectionFade />
       <Finale />
     </main>
+  );
+}
+
+/* Cinematic divider — soft fade between sections */
+function SectionFade() {
+  return (
+    <div aria-hidden className="relative h-px w-full">
+      <div className="absolute inset-x-0 -top-12 h-24 bg-gradient-to-b from-transparent via-[color:var(--color-cream)]/30 to-transparent" />
+      <div className="mx-auto h-px w-40 bg-gradient-to-r from-transparent via-[color:var(--color-gold)]/40 to-transparent" />
+    </div>
   );
 }
 
@@ -90,7 +117,23 @@ function Hero() {
         >
           Happy Birthday,
           <br />
-          <span className="font-script text-gold-gradient text-6xl sm:text-8xl md:text-9xl">
+          <span
+            onClick={() => {
+              const sft = (confetti as unknown as { shapeFromText?: (o: { text: string; scalar?: number }) => unknown }).shapeFromText;
+              const heart = sft ? (sft({ text: "♥", scalar: 2 }) as never) : undefined;
+              confetti({
+                particleCount: 24,
+                spread: 70,
+                startVelocity: 28,
+                ticks: 120,
+                origin: { y: 0.35 },
+                colors: ["#f5c6d6", "#c9a7d4", "#d4af6a", "#ffffff"],
+                ...(heart ? { shapes: [heart], scalar: 1.6 } : {}),
+              } as Parameters<typeof confetti>[0]);
+            }}
+            className="font-script text-gold-gradient text-6xl sm:text-8xl md:text-9xl cursor-pointer select-none transition-transform hover:scale-[1.03] inline-block"
+            title="(a tiny secret — tap me)"
+          >
             Urvi
           </span>
         </motion.h1>
@@ -559,7 +602,45 @@ function Finale() {
           Happy birthday, again. — Always, gently.
         </p>
       </motion.div>
+
+      {/* Emotional fade-out closing */}
+      <FinalWhisper />
     </section>
+  );
+}
+
+function FinalWhisper() {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end end"],
+  });
+  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 1, 1]);
+  const y = useTransform(scrollYProgress, [0, 1], [30, 0]);
+  const veil = useTransform(scrollYProgress, [0.4, 1], [0, 0.55]);
+
+  return (
+    <>
+      <motion.div
+        aria-hidden
+        style={{ opacity: veil }}
+        className="pointer-events-none absolute inset-0 z-0"
+      >
+        <div className="h-full w-full bg-gradient-to-b from-transparent via-[color:var(--color-cream)]/40 to-[color:var(--color-cream)]" />
+      </motion.div>
+      <motion.div
+        ref={ref}
+        style={{ opacity, y }}
+        className="pointer-events-none absolute inset-x-0 bottom-10 z-10 mx-auto max-w-xl px-6 text-center"
+      >
+        <p className="font-script text-xl text-[color:var(--color-mauve)] sm:text-2xl">
+          — fin.
+        </p>
+        <p className="mt-2 text-[11px] uppercase tracking-[0.35em] text-[color:var(--color-ink-soft)]/70">
+          made quietly, for urvi
+        </p>
+      </motion.div>
+    </>
   );
 }
 
