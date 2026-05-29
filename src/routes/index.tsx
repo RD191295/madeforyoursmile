@@ -119,9 +119,8 @@ function Hero() {
           <br />
           <span
             onClick={() => {
-              const heart = confetti.shapeFromText
-                ? confetti.shapeFromText({ text: "♥", scalar: 2 })
-                : undefined;
+              const sft = (confetti as unknown as { shapeFromText?: (o: { text: string; scalar?: number }) => unknown }).shapeFromText;
+              const heart = sft ? sft({ text: "♥", scalar: 2 }) : undefined;
               confetti({
                 particleCount: 24,
                 spread: 70,
