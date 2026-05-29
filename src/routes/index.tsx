@@ -117,7 +117,24 @@ function Hero() {
         >
           Happy Birthday,
           <br />
-          <span className="font-script text-gold-gradient text-6xl sm:text-8xl md:text-9xl">
+          <span
+            onClick={() => {
+              const heart = confetti.shapeFromText
+                ? confetti.shapeFromText({ text: "♥", scalar: 2 })
+                : undefined;
+              confetti({
+                particleCount: 24,
+                spread: 70,
+                startVelocity: 28,
+                ticks: 120,
+                origin: { y: 0.35 },
+                colors: ["#f5c6d6", "#c9a7d4", "#d4af6a", "#ffffff"],
+                ...(heart ? { shapes: [heart], scalar: 1.6 } : {}),
+              });
+            }}
+            className="font-script text-gold-gradient text-6xl sm:text-8xl md:text-9xl cursor-pointer select-none transition-transform hover:scale-[1.03] inline-block"
+            title="(a tiny secret — tap me)"
+          >
             Urvi
           </span>
         </motion.h1>
