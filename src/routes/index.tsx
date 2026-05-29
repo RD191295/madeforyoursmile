@@ -603,7 +603,45 @@ function Finale() {
           Happy birthday, again. — Always, gently.
         </p>
       </motion.div>
+
+      {/* Emotional fade-out closing */}
+      <FinalWhisper />
     </section>
+  );
+}
+
+function FinalWhisper() {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end end"],
+  });
+  const opacity = useTransform(scrollYProgress, [0, 0.5, 1], [0, 1, 1]);
+  const y = useTransform(scrollYProgress, [0, 1], [30, 0]);
+  const veil = useTransform(scrollYProgress, [0.4, 1], [0, 0.55]);
+
+  return (
+    <>
+      <motion.div
+        aria-hidden
+        style={{ opacity: veil }}
+        className="pointer-events-none absolute inset-0 z-0"
+      >
+        <div className="h-full w-full bg-gradient-to-b from-transparent via-[color:var(--color-cream)]/40 to-[color:var(--color-cream)]" />
+      </motion.div>
+      <motion.div
+        ref={ref}
+        style={{ opacity, y }}
+        className="pointer-events-none absolute inset-x-0 bottom-10 z-10 mx-auto max-w-xl px-6 text-center"
+      >
+        <p className="font-script text-xl text-[color:var(--color-mauve)] sm:text-2xl">
+          — fin.
+        </p>
+        <p className="mt-2 text-[11px] uppercase tracking-[0.35em] text-[color:var(--color-ink-soft)]/70">
+          made quietly, for urvi
+        </p>
+      </motion.div>
+    </>
   );
 }
 
