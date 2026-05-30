@@ -13,7 +13,7 @@ import { DynamicBackground } from "@/components/DynamicBackground";
 import { StarField } from "@/components/StarField";
 import { VoiceMessage } from "@/components/VoiceMessage";
 
-import mem1 from "@/assets/memory-1.jpg";
+import mem1 from "@/assets/IMG_1700.jpeg";
 import mem2 from "@/assets/memory-2.jpg";
 import mem3 from "@/assets/memory-3.jpg";
 import mem4 from "@/assets/memory-4.jpg";
