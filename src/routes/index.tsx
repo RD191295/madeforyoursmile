@@ -14,7 +14,7 @@ import { StarField } from "@/components/StarField";
 import { VoiceMessage } from "@/components/VoiceMessage";
 
 import mem1 from "@/assets/IMG_1700.jpeg";
-import mem2 from "@/assets/memory-2.jpg";
+import mem2 from "@/assets/IMG_1702.jpeg";
 import mem3 from "@/assets/memory-3.jpg";
 import mem4 from "@/assets/memory-4.jpg";
 import mem5 from "@/assets/memory-5.jpg";
