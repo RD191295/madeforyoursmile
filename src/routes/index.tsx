@@ -184,7 +184,7 @@ const ADMIRE = [
   {
     icon: Coffee,
     title: "Our conversations",
-    text: "What often starts as a simple chat somehow turns into an hour before either of us notices. That's something I genuinely enjoy."",
+    text: "What often starts as a simple chat somehow turns into an hour before either of us notices. That's something I genuinely enjoy.",
   },
   {
     icon: Star,
