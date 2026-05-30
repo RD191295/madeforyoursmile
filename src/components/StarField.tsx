@@ -4,7 +4,7 @@ import { Star, X } from "lucide-react";
 
 const MESSAGES = [
   "You make conversations feel effortless.",
-  "Somehow, two hours at CCD felt far too short.",
+  "Here's to slow conversations and cold coffe.",
   "Your pleasant nature is one of the first things I noticed.",
   "Thank you for making these early conversations feel comfortable.",
   "I admire how thoughtfully you listen.",
