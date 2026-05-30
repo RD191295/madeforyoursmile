@@ -105,8 +105,10 @@ function Hero() {
           transition={{ duration: 1 }}
           className="mb-6 inline-flex items-center gap-2 rounded-full glass px-4 py-2 text-xs font-medium uppercase tracking-[0.25em] text-[color:var(--color-ink-soft)]"
         >
-          <Sparkles size={14} className="text-[color:var(--color-gold)]" />
-          A little surprise
+        <Cake size={16} className="text-[color:var(--color-gold)]" />
+        <span className="text-sm uppercase tracking-[0.2em] text-[color:var(--color-ink-soft)]">
+          Today is all about you ✨
+        </span>
         </motion.div>
 
         <motion.h1
