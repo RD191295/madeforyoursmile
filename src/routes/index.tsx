@@ -573,10 +573,7 @@ function FutureWishes() {
             </div>
           ))}
         </div>
-
-        <p className="mt-10 font-serif text-lg italic text-[color:var(--color-ink-soft)]">
-          And selfishly... I hope I get to be part of some of those moments.
-        </p>
+        
       </div>
     </section>
   );
