@@ -3,14 +3,15 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Star, X } from "lucide-react";
 
 const MESSAGES = [
-  "You make ordinary days feel quietly special.",
-  "Thank you for being patient with my words.",
-  "I notice the small kindnesses. All of them.",
-  "Whatever this becomes — today, I'm grateful.",
-  "You deserve every soft, beautiful thing.",
-  "There's a calm about you that feels like home.",
-  "Here's to slow conversations and cold coffe.",
-  "I hope this year is gentle and a little brave.",
+  "You make conversations feel effortless.",
+  "Somehow, two hours at CCD felt far too short.",
+  "Your pleasant nature is one of the first things I noticed.",
+  "Thank you for making these early conversations feel comfortable.",
+  "I admire how thoughtfully you listen.",
+  "There's a calmness in your presence that stays with me.",
+  "Late-night conversations with you never feel long enough.",
+  "I hope this year brings you happiness, growth, and beautiful surprises.",
+  "Today is your day — I hope it's every bit as wonderful as you are.",
 ];
 
 type Star = { id: number; x: number; y: number; size: number; delay: number; msg: string };
