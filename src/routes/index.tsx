@@ -182,19 +182,19 @@ function Hero() {
 /* ---------- ADMIRE ---------- */
 const ADMIRE = [
   {
-    icon: Heart,
-    title: "Your kindness",
-    text: "The way you speak about people — gentle, patient, always seeing the good first. It tells me everything I need to know.",
+    icon: Coffee,
+    title: "Our conversations",
+    text: "What often starts as a simple chat somehow turns into an hour before either of us notices. That's something I genuinely enjoy."",
   },
   {
     icon: Star,
-    title: "Your quiet strength",
-    text: "You carry your dreams without noise, and that kind of steadiness is rare and beautiful.",
+    title: "Your Pleasuant nature",
+    text: "You have a way of making people feel comfortable without even trying. Every conversation with you feels natural, easy, and filled with positive energy.",
   },
   {
     icon: Sparkles,
-    title: "Your laughter",
-    text: "It changes the temperature of a conversation. I notice it every single time.",
+    title: "The way you see life",
+    text: "I always enjoy hearing your thoughts, whether it's about family, travel, work, or the little things that matter.",
   },
   {
     icon: Quote,
