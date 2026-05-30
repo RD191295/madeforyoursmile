@@ -140,7 +140,9 @@ function Hero() {
 
         <p className="mt-8 min-h-[3.5rem] text-balance text-base text-[color:var(--color-ink-soft)] sm:text-lg">
           <TypeWriter
-            text="Today the world feels a little softer, because you exist in it."
+            text="Some birthdays deserve more than a message.
+            So I made something small,
+            just to bring a smile to your day."
             delay={1400}
             speed={42}
           />
