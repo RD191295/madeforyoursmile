@@ -4,13 +4,12 @@ import { Star, X } from "lucide-react";
 
 const MESSAGES = [
   "You make ordinary days feel quietly special.",
-  "Your laugh is my favourite sound this month.",
   "Thank you for being patient with my words.",
   "I notice the small kindnesses. All of them.",
   "Whatever this becomes — today, I'm grateful.",
   "You deserve every soft, beautiful thing.",
   "There's a calm about you that feels like home.",
-  "Here's to slow conversations and warm tea.",
+  "Here's to slow conversations and cold coffe.",
   "I hope this year is gentle and a little brave.",
 ];
 
