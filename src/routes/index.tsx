@@ -294,7 +294,7 @@ const JOURNEY = [
     date: "23 May 2026",
     time: "2:00 PM",
     place: "Café Coffee Day, Navi Mumbai",
-    title: "Second Meeting",
+    title: "The CCD Afternoon",
     text: "Almost two hours together — so many thoughts shared, so many things spoken. Time moved so quietly it didn't feel like two hours at all.",
   },
   {
