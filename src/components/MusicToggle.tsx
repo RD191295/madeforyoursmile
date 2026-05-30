@@ -1,14 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { Music2, VolumeX, Volume2 } from "lucide-react";
+import { AlertCircle, Loader2, Music2, Play, Volume2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const MUSIC_URL =
-  "https://cdn.jsdelivr.net/gh/anars/blank-audio@master/2-minutes-of-silence.mp3";
-const FALLBACK_URLS = [
-  "https://cdn.pixabay.com/download/audio/2022/03/15/audio_1ada6736f8.mp3?filename=relaxing-piano-music-15009.mp3",
-  "https://www.bensound.com/bensound-music/bensound-tenderness.mp3",
-  "https://cdn.pixabay.com/download/audio/2023/06/27/audio_a107d4985c.mp3?filename=relaxing-music-vol1-149456.mp3",
-];
+const MUSIC_URL = "/audio/ambient-birthday.mp3";
 
 export function MusicToggle() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -16,51 +10,82 @@ export function MusicToggle() {
   const [open, setOpen] = useState(false);
   const [volume, setVolume] = useState(0.35);
   const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const setupAudio = () => {
+    if (audioRef.current) return audioRef.current;
+
+    const audio = new Audio(MUSIC_URL);
+    audio.loop = true;
+    audio.preload = "auto";
+    audio.volume = volume;
+
+    audio.addEventListener("playing", () => {
+      setPlaying(true);
+      setLoading(false);
+      setError(false);
+    });
+
+    audio.addEventListener("pause", () => {
+      setPlaying(false);
+      setLoading(false);
+    });
+
+    audio.addEventListener("waiting", () => {
+      setLoading(true);
+    });
+
+    audio.addEventListener("canplay", () => {
+      setLoading(false);
+      setError(false);
+    });
+
+    audio.addEventListener("error", () => {
+      setLoading(false);
+      setPlaying(false);
+      setError(true);
+    });
+
+    audioRef.current = audio;
+    return audio;
+  };
 
   useEffect(() => {
     if (audioRef.current) audioRef.current.volume = volume;
   }, [volume]);
 
-  const tryPlay = async (urls: string[]): Promise<HTMLAudioElement | null> => {
-    for (const url of urls) {
-      const a = new Audio();
-      a.crossOrigin = "anonymous";
-      a.loop = true;
-      a.volume = volume;
-      a.preload = "auto";
-      a.src = url;
-      try {
-        await a.play();
-        return a;
-      } catch (e) {
-        a.pause();
+  useEffect(() => {
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current.src = "";
+        audioRef.current = null;
       }
-    }
-    return null;
-  };
+    };
+  }, []);
 
   const toggle = async () => {
-    if (playing && audioRef.current) {
-      audioRef.current.pause();
+    const audio = setupAudio();
+
+    if (playing) {
+      audio.pause();
       setPlaying(false);
       return;
     }
-    if (audioRef.current) {
-      try {
-        await audioRef.current.play();
-        setPlaying(true);
-        return;
-      } catch {
-        // fall through to recreate
-      }
-    }
-    const a = await tryPlay([MUSIC_URL, ...FALLBACK_URLS]);
-    if (a) {
-      audioRef.current = a;
+
+    setLoading(true);
+    setError(false);
+
+    try {
+      audio.currentTime = audio.currentTime || 0;
+      await audio.play();
       setPlaying(true);
       setError(false);
-    } else {
+    } catch {
+      setPlaying(false);
       setError(true);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -84,7 +109,7 @@ export function MusicToggle() {
                 ambient
               </span>
               <span className="font-serif text-sm text-[color:var(--color-ink)]">
-                for your evening
+                soft birthday theme
               </span>
             </div>
             <Volume2 size={12} className="text-[color:var(--color-ink-soft)]" />
@@ -98,6 +123,13 @@ export function MusicToggle() {
               className="h-1 w-20 cursor-pointer appearance-none rounded-full bg-[color:var(--color-mauve)]/25 accent-[color:var(--color-mauve)]"
               aria-label="Volume"
             />
+            {error && (
+              <AlertCircle
+                size={14}
+                className="text-[color:var(--color-gold)]"
+                aria-hidden="true"
+              />
+            )}
           </motion.div>
         )}
       </AnimatePresence>
@@ -109,7 +141,15 @@ export function MusicToggle() {
         aria-label={playing ? "Mute music" : "Play music"}
         className="glass relative flex h-12 w-12 items-center justify-center rounded-full text-[color:var(--color-ink)]"
       >
-        {playing ? <Music2 size={18} /> : <VolumeX size={18} />}
+        {loading ? (
+          <Loader2 size={18} className="animate-spin" />
+        ) : playing ? (
+          <Music2 size={18} />
+        ) : error ? (
+          <AlertCircle size={18} />
+        ) : (
+          <Play size={18} className="ml-0.5" />
+        )}
         {playing && (
           <motion.span
             className="absolute inset-0 rounded-full border border-[color:var(--color-mauve)]/50"
