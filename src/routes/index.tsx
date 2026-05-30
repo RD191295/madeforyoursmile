@@ -202,7 +202,7 @@ const ADMIRE = [
   {
     icon: Heart,
     title: "Your honesty",
-    text: "You say what you mean, kindly. It makes every conversation feel safe.",
+    text: "You say what you mean, kindly. It makes every conversation feel safe. How naturally conversations flow with you",
   },
   {
     icon: Star,
@@ -515,7 +515,8 @@ function Letter() {
         </div>
 
         <p className="mt-8 font-script text-2xl text-[color:var(--color-mauve)] sm:text-3xl">
-          Yours, with care.
+          With warm wishes,
+          Raj ✨
         </p>
       </motion.article>
     </section>
