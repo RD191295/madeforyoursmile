@@ -15,7 +15,7 @@ import { VoiceMessage } from "@/components/VoiceMessage";
 
 import mem1 from "@/assets/IMG_1700.jpeg";
 import mem2 from "@/assets/IMG_1702.jpeg";
-import mem3 from "@/assets/memory-3.jpg";
+import mem3 from "@/assets/5CA03E22-9328-4892-8FF0-3F121FD8999A.jpeg";
 import mem4 from "@/assets/memory-4.jpg";
 import mem5 from "@/assets/memory-5.jpg";
 import mem6 from "@/assets/memory-6.jpg";
