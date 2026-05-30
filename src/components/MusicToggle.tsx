@@ -3,43 +3,64 @@ import { Music2, VolumeX, Volume2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const MUSIC_URL =
-  "https://cdn.pixabay.com/download/audio/2022/03/15/audio_1ada6736f8.mp3?filename=relaxing-piano-music-15009.mp3";
+  "https://cdn.jsdelivr.net/gh/anars/blank-audio@master/2-minutes-of-silence.mp3";
+const FALLBACK_URLS = [
+  "https://cdn.pixabay.com/download/audio/2022/03/15/audio_1ada6736f8.mp3?filename=relaxing-piano-music-15009.mp3",
+  "https://www.bensound.com/bensound-music/bensound-tenderness.mp3",
+  "https://cdn.pixabay.com/download/audio/2023/06/27/audio_a107d4985c.mp3?filename=relaxing-music-vol1-149456.mp3",
+];
 
 export function MusicToggle() {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [playing, setPlaying] = useState(false);
   const [open, setOpen] = useState(false);
   const [volume, setVolume] = useState(0.35);
-
-  useEffect(() => {
-    const audio = new Audio(MUSIC_URL);
-    audio.loop = true;
-    audio.volume = volume;
-    audioRef.current = audio;
-    return () => {
-      audio.pause();
-      audioRef.current = null;
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
     if (audioRef.current) audioRef.current.volume = volume;
   }, [volume]);
 
-  const toggle = async () => {
-    const a = audioRef.current;
-    if (!a) return;
-    if (playing) {
-      a.pause();
-      setPlaying(false);
-    } else {
+  const tryPlay = async (urls: string[]): Promise<HTMLAudioElement | null> => {
+    for (const url of urls) {
+      const a = new Audio();
+      a.crossOrigin = "anonymous";
+      a.loop = true;
+      a.volume = volume;
+      a.preload = "auto";
+      a.src = url;
       try {
         await a.play();
-        setPlaying(true);
-      } catch {
-        setPlaying(false);
+        return a;
+      } catch (e) {
+        a.pause();
       }
+    }
+    return null;
+  };
+
+  const toggle = async () => {
+    if (playing && audioRef.current) {
+      audioRef.current.pause();
+      setPlaying(false);
+      return;
+    }
+    if (audioRef.current) {
+      try {
+        await audioRef.current.play();
+        setPlaying(true);
+        return;
+      } catch {
+        // fall through to recreate
+      }
+    }
+    const a = await tryPlay([MUSIC_URL, ...FALLBACK_URLS]);
+    if (a) {
+      audioRef.current = a;
+      setPlaying(true);
+      setError(false);
+    } else {
+      setError(true);
     }
   };
 
