@@ -637,7 +637,7 @@ function FinalWhisper() {
         className="pointer-events-none absolute inset-x-0 bottom-10 z-10 mx-auto max-w-xl px-6 text-center"
       >
         <p className="font-script text-xl text-[color:var(--color-mauve)] sm:text-2xl">
-          — fin.
+          — made with care, by raj .
         </p>
         <p className="mt-2 text-[11px] uppercase tracking-[0.35em] text-[color:var(--color-ink-soft)]/70">
           made quietly, for urvi
