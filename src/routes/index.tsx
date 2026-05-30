@@ -85,9 +85,18 @@ function SectionFade() {
 /* ---------- HERO ---------- */
 function Hero() {
   const ref = useRef<HTMLElement>(null);
+  const [clickCount, setClickCount] = useState(0);
   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], [0, 120]);
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+
+  useEffect(() => {
+  if (clickCount === 3) {
+    alert(
+      "A small confession...\n\nI originally planned to make a simple birthday page.\nThen I kept adding things because I wanted it to be special 🙂"
+    );
+  }
+}, [clickCount]);
 
   return (
     <section
@@ -121,18 +130,24 @@ function Hero() {
           <br />
           <span
             onClick={() => {
-              const sft = (confetti as unknown as { shapeFromText?: (o: { text: string; scalar?: number }) => unknown }).shapeFromText;
-              const heart = sft ? (sft({ text: "♥", scalar: 2 }) as never) : undefined;
-              confetti({
-                particleCount: 24,
-                spread: 70,
-                startVelocity: 28,
-                ticks: 120,
-                origin: { y: 0.35 },
-                colors: ["#f5c6d6", "#c9a7d4", "#d4af6a", "#ffffff"],
-                ...(heart ? { shapes: [heart], scalar: 1.6 } : {}),
-              } as Parameters<typeof confetti>[0]);
-            }}
+                setClickCount((prev) => prev + 1);
+              
+                const sft = (confetti as unknown as {
+                  shapeFromText?: (o: { text: string; scalar?: number }) => unknown
+                }).shapeFromText;
+              
+                const heart = sft ? (sft({ text: "♥", scalar: 2 }) as never) : undefined;
+              
+                confetti({
+                  particleCount: 24,
+                  spread: 70,
+                  startVelocity: 28,
+                  ticks: 120,
+                  origin: { y: 0.35 },
+                  colors: ["#f5c6d6", "#c9a7d4", "#d4af6a", "#ffffff"],
+                  ...(heart ? { shapes: [heart], scalar: 1.6 } : {}),
+                } as Parameters<typeof confetti>[0]);
+              }}
             className="font-script text-gold-gradient text-6xl sm:text-8xl md:text-9xl cursor-pointer select-none transition-transform hover:scale-[1.03] inline-block"
             title="(a tiny secret — tap me)"
           >
