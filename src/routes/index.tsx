@@ -65,6 +65,8 @@ function Page() {
       <SectionFade />
       <Letter />
       <SectionFade />
+      <FutureWishes />
+      <SectionFade />
       <StarField />
       <SectionFade />
       <Finale />
@@ -538,6 +540,44 @@ function Letter() {
           Raj ✨
         </p>
       </motion.article>
+    </section>
+  );
+}
+/* ------------FutureWishes ------ */
+function FutureWishes() {
+  const wishes = [
+    "More reasons to smile",
+    "New places to explore",
+    "Meaningful conversations",
+    "Beautiful surprises",
+    "People who genuinely care about you",
+  ];
+
+  return (
+    <section className="px-6 py-28 sm:py-36">
+      <SectionHeader
+        eyebrow="For the year ahead"
+        title="A few wishes for you"
+        sub="for the next chapter"
+      />
+
+      <div className="glass mx-auto mt-16 max-w-3xl rounded-3xl p-8 sm:p-12">
+        <div className="space-y-5">
+          {wishes.map((wish) => (
+            <div
+              key={wish}
+              className="flex items-center gap-4 text-lg"
+            >
+              <span>✨</span>
+              <span>{wish}</span>
+            </div>
+          ))}
+        </div>
+
+        <p className="mt-10 font-serif text-lg italic text-[color:var(--color-ink-soft)]">
+          And selfishly... I hope I get to be part of some of those moments.
+        </p>
+      </div>
     </section>
   );
 }
