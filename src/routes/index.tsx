@@ -23,7 +23,7 @@ import mem6 from "@/assets/memory-6.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Happy Birthday — A Little Surprise For You" },
+      { title: "Happy Birthday Urvi ✨" },
       {
         name: "description",
         content:
