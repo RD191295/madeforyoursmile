@@ -55,13 +55,40 @@ export function MusicToggle() {
   }, [volume]);
 
   useEffect(() => {
+    const audio = setupAudio();
+
+    const startOnGesture = async () => {
+      try {
+        await audio.play();
+      } catch {
+        /* ignore */
+      }
+      window.removeEventListener("pointerdown", startOnGesture);
+      window.removeEventListener("keydown", startOnGesture);
+      window.removeEventListener("touchstart", startOnGesture);
+      window.removeEventListener("scroll", startOnGesture);
+    };
+
+    // Try immediate autoplay; fall back to first user gesture if blocked
+    audio.play().catch(() => {
+      window.addEventListener("pointerdown", startOnGesture, { once: true });
+      window.addEventListener("keydown", startOnGesture, { once: true });
+      window.addEventListener("touchstart", startOnGesture, { once: true });
+      window.addEventListener("scroll", startOnGesture, { once: true });
+    });
+
     return () => {
+      window.removeEventListener("pointerdown", startOnGesture);
+      window.removeEventListener("keydown", startOnGesture);
+      window.removeEventListener("touchstart", startOnGesture);
+      window.removeEventListener("scroll", startOnGesture);
       if (audioRef.current) {
         audioRef.current.pause();
         audioRef.current.src = "";
         audioRef.current = null;
       }
     };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const toggle = async () => {
