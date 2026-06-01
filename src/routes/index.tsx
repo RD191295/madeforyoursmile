@@ -329,7 +329,7 @@ const JOURNEY = [
   },
   {
     icon: Cake,
-    date: "28 May 2026",
+    date: "4 June 2026",
     time: "Today",
     place: "Your Special Day",
     title: "Birthday Surprise",
