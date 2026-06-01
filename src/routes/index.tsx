@@ -70,6 +70,8 @@ function Page() {
       <SectionFade />
       <StarField />
       <SectionFade />
+      <WishJar />
+      <SectionFade />
       <Finale />
     </main>
   );
