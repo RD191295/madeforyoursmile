@@ -81,17 +81,7 @@ export function WishJar() {
               onSubmit={handleSubmit}
               className="glass relative overflow-hidden rounded-3xl p-7 sm:p-9"
             >
-              <div className="pointer-events-none absolute -right-16 -top-16 h-44 w-44 rounded-full bg-gradient-to-br from-[color:var(--color-rose)]/40 to-[color:var(--color-gold)]/30 blur-3xl" />
-              <label className="block text-[11px] font-medium uppercase tracking-[0.25em] text-[color:var(--color-ink-soft)]">
-                From (optional)
-              </label>
-              <input
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                maxLength={80}
-                placeholder="your name, or leave it blank"
-                className="mt-2 w-full rounded-xl border border-[color:var(--color-mauve)]/20 bg-white/60 px-4 py-3 text-[15px] text-[color:var(--color-ink)] placeholder:text-[color:var(--color-ink-soft)]/50 focus:border-[color:var(--color-gold)]/60 focus:outline-none focus:ring-2 focus:ring-[color:var(--color-gold)]/20"
-              />
+          
 
               <label className="mt-5 block text-[11px] font-medium uppercase tracking-[0.25em] text-[color:var(--color-ink-soft)]">
                 Your wish
