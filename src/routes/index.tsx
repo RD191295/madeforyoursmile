@@ -12,6 +12,7 @@ import { ScrollProgress } from "@/components/ScrollProgress";
 import { DynamicBackground } from "@/components/DynamicBackground";
 import { StarField } from "@/components/StarField";
 import { VoiceMessage } from "@/components/VoiceMessage";
+import { WishJar } from "@/components/WishJar";
 
 import mem1 from "@/assets/IMG_1700.jpeg";
 import mem2 from "@/assets/IMG_1702.jpeg";
@@ -68,6 +69,8 @@ function Page() {
       <FutureWishes />
       <SectionFade />
       <StarField />
+      <SectionFade />
+      <WishJar />
       <SectionFade />
       <Finale />
     </main>
