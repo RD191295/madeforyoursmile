@@ -67,6 +67,8 @@ function Page() {
       <SectionFade />
       <Letter />
       <SectionFade />
+      <BucketList />
+      <SectionFade />
       <FutureWishes />
       <SectionFade />
       <StarField />
