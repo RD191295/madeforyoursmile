@@ -13,6 +13,7 @@ import { DynamicBackground } from "@/components/DynamicBackground";
 import { StarField } from "@/components/StarField";
 import { VoiceMessage } from "@/components/VoiceMessage";
 import { WishJar } from "@/components/WishJar";
+import { BucketList } from "@/components/BucketList";
 
 import mem1 from "@/assets/IMG_1700.jpeg";
 import mem2 from "@/assets/IMG_1702.jpeg";
@@ -65,6 +66,8 @@ function Page() {
       <Gallery />
       <SectionFade />
       <Letter />
+      <SectionFade />
+      <BucketList />
       <SectionFade />
       <FutureWishes />
       <SectionFade />
