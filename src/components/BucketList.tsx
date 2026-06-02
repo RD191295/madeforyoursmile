@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { MapPin, Calendar, Heart, Music, Coffee, Plane, Camera, Utensils, BookOpen, Film } from "lucide-react";
+import { MapPin, Calendar, Heart, Music, Coffee, Plane, Camera, Utensils, Film } from "lucide-react";
 
 const BUCKET_ITEMS = [
   {
@@ -43,13 +43,6 @@ const BUCKET_ITEMS = [
     place: "Old streets or gardens",
     note: "Capture little moments and each other candidly.",
     tag: "anytime",
-  },
-  {
-    icon: BookOpen,
-    title: "Bookstore date",
-    place: "Quiet indie bookstore",
-    note: "Pick books for each other and read the first chapter aloud.",
-    tag: "soon",
   },
   {
     icon: Heart,
