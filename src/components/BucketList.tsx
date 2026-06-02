@@ -96,6 +96,18 @@ export function BucketList() {
           <TicketCard key={item.title} item={item} index={i} />
         ))}
       </div>
+
+      <motion.p
+        initial={{ opacity: 0, y: 12 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-60px" }}
+        transition={{ duration: 0.8, delay: 0.1 }}
+        className="mx-auto mt-20 max-w-lg text-center font-script text-xl leading-relaxed text-[color:var(--color-ink-soft)]/70 sm:text-2xl"
+      >
+        No rush. No expectations.
+        <br />
+        Just a few little hopes for the chapters that haven't been written yet.
+      </motion.p>
     </section>
   );
 }
