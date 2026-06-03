@@ -536,14 +536,24 @@ function Letter() {
             when I think about it.
           </p>
           <p>
+          Sometimes I find myself curious about the stories I haven't heard yet — 
+          your favourite childhood memories, the moments that shaped you, 
+          the dreams you still carry, and all the little things that make you who you are.
+          And in the same way, I look forward to sharing my own stories with you too. 
+          It feels nice knowing that there is still so much left to discover about each other.
+          </p>
+          <p>
             On your birthday, I do not want to promise the world. I only want to say this: I
             hope today feels soft. I hope you are surrounded by people who love you out loud. I
             hope the year ahead is kind to you, a little adventurous, and full of the small joys
             you deserve.
           </p>
           <p>
-            And quietly, sincerely — I hope I get to keep being a small good thing in your
-            story.
+          And quietly, sincerely — I hope we get many more conversations, many more shared stories, 
+          and many more reasons to smile along the way.
+          </p>
+          <p>
+          And I hope I get to keep being a small good thing in your story.
           </p>
         </div>
 
