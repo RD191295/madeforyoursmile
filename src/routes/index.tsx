@@ -468,7 +468,7 @@ function Gallery() {
         sub="a mood board, just for today"
       />
 
-      <div className="mx-auto mt-16 grid max-w-6xl auto-rows-[180px] grid-cols-2 gap-3 sm:auto-rows-[220px] sm:grid-cols-3 sm:gap-4 md:auto-rows-[260px]">
+      <div className="mx-auto mt-16 grid max-w-6xl grid-cols-1 gap-4 sm:auto-rows-[220px] sm:grid-cols-3 sm:gap-4 md:auto-rows-[260px]">
         {GALLERY.map((g, i) => (
           <motion.figure
             key={i}
@@ -477,13 +477,13 @@ function Gallery() {
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.7, delay: i * 0.06 }}
             whileHover={{ y: -4 }}
-            className={`group relative overflow-hidden rounded-2xl ${g.span} shadow-[0_20px_50px_-25px_rgba(58,47,63,0.4)]`}
+            className={`group relative overflow-hidden rounded-2xl shadow-[0_20px_50px_-25px_rgba(58,47,63,0.4)] sm:${g.span}`}
           >
             <img
               src={g.src}
               alt={g.alt}
               loading="lazy"
-              className="h-full w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-110"
+              className="block h-auto w-full object-cover transition-transform duration-[1200ms] ease-out group-hover:scale-110 sm:h-full"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[color:var(--color-ink)]/30 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
           </motion.figure>
