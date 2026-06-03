@@ -477,7 +477,7 @@ function Gallery() {
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.7, delay: i * 0.06 }}
             whileHover={{ y: -4 }}
-            className={`group relative overflow-hidden rounded-2xl shadow-[0_20px_50px_-25px_rgba(58,47,63,0.4)] sm:${g.span}`}
+            className={`group relative overflow-hidden rounded-2xl shadow-[0_20px_50px_-25px_rgba(58,47,63,0.4)] ${g.span}`}
           >
             <img
               src={g.src}
