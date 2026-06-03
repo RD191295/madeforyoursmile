@@ -451,10 +451,10 @@ function Journey() {
 
 /* ---------- GALLERY ---------- */
 const GALLERY = [
-  { src: mem1, span: "row-span-2", alt: "Pink peonies and lavender" },
+  { src: mem1, span: "sm:row-span-2", alt: "Pink peonies and lavender" },
   { src: mem2, span: "", alt: "Two champagne glasses" },
   { src: mem5, span: "", alt: "Soft pink sky" },
-  { src: mem4, span: "row-span-2", alt: "Pink birthday cake" },
+  { src: mem4, span: "sm:row-span-2", alt: "Pink birthday cake" },
   { src: mem6, span: "", alt: "Peony bouquet" },
   { src: mem3, span: "", alt: "Handwritten letter with lavender" },
 ];
