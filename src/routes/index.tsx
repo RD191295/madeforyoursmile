@@ -655,7 +655,7 @@ function FutureWishes() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-60px" }}
         transition={{ duration: 0.8, delay: 0.2 }}
-        className="mx-auto mt-16 max-w-xl text-center font-script text-xl leading-relaxed text-[color:var(--color-ink-soft)]/75 sm:text-2xl"
+        className="mx-auto mt-16 max-w-sm px-4 text-center font-script text-lg leading-relaxed text-[color:var(--color-ink-soft)]/75 sm:max-w-lg sm:px-0 sm:text-xl md:max-w-xl md:text-2xl"
       >
         and quietly — all the good things you haven't even thought to wish for yet.
       </motion.p>
