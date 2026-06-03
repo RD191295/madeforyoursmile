@@ -552,38 +552,117 @@ function Letter() {
 /* ------------FutureWishes ------ */
 function FutureWishes() {
   const wishes = [
-    "More reasons to smile",
-    "New places to explore",
-    "Meaningful conversations",
-    "Beautiful surprises",
-    "People who genuinely care about you",
+    {
+      icon: Heart,
+      title: "More reasons to smile",
+      note: "the tiny everyday ones that catch you off guard.",
+    },
+    {
+      icon: MapPin,
+      title: "New places to explore",
+      note: "near or far — wherever your curiosity pulls you.",
+    },
+    {
+      icon: MessageCircle,
+      title: "Meaningful conversations",
+      note: "the kind that stay with you long after they end.",
+    },
+    {
+      icon: Gift,
+      title: "Beautiful surprises",
+      note: "soft, unexpected moments that feel like little gifts.",
+    },
+    {
+      icon: Sparkles,
+      title: "People who genuinely care",
+      note: "the ones who show up, quietly and without asking.",
+    },
   ];
 
   return (
-    <section className="px-6 py-28 sm:py-36">
+    <section className="relative px-6 py-28 sm:py-36">
+      <div className="pointer-events-none absolute inset-0 -z-10">
+        <div className="absolute left-1/3 top-1/4 h-[320px] w-[320px] rounded-full bg-[color:var(--color-rose)]/20 blur-[110px]" />
+        <div className="absolute right-1/4 bottom-1/4 h-[280px] w-[280px] rounded-full bg-[color:var(--color-lavender)]/25 blur-[110px]" />
+      </div>
+
       <SectionHeader
         eyebrow="For the year ahead"
         title="A few wishes for you"
         sub="for the next chapter"
       />
 
-      <div className="glass mx-auto mt-16 max-w-3xl rounded-3xl p-8 sm:p-12">
-        <div className="space-y-5">
-          {wishes.map((wish) => (
-            <div
-              key={wish}
-              className="flex items-center gap-4 text-lg"
+      <div className="mx-auto mt-16 grid max-w-5xl gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        {wishes.map((w, i) => {
+          const Icon = w.icon;
+          return (
+            <motion.div
+              key={w.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.7, delay: i * 0.08 }}
+              whileHover={{ y: -6 }}
+              className="group relative"
             >
-              <span>✨</span>
-              <span>{wish}</span>
-            </div>
-          ))}
-        </div>
-        
+              {/* gold accent glow on hover */}
+              <div className="absolute -inset-px rounded-3xl bg-gradient-to-br from-[color:var(--color-gold)]/30 via-transparent to-[color:var(--color-rose)]/30 opacity-0 blur-md transition-opacity duration-500 group-hover:opacity-100" />
+
+              <div className="glass relative h-full overflow-hidden rounded-3xl p-7 sm:p-8">
+                {/* corner sparkle */}
+                <Sparkles
+                  size={12}
+                  className="absolute right-5 top-5 text-[color:var(--color-gold)]/50 transition-transform duration-700 group-hover:rotate-180 group-hover:scale-125"
+                />
+
+                {/* hairline divider top */}
+                <div className="absolute left-7 right-7 top-0 h-px bg-gradient-to-r from-transparent via-[color:var(--color-mauve)]/25 to-transparent" />
+
+                {/* number */}
+                <div className="font-serif text-[11px] uppercase tracking-[0.3em] text-[color:var(--color-mauve)]/70">
+                  Wish · {String(i + 1).padStart(2, "0")}
+                </div>
+
+                {/* icon */}
+                <div className="mt-5 inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-white/80 to-[color:var(--color-rose)]/20 text-[color:var(--color-mauve)] shadow-sm ring-1 ring-[color:var(--color-border)]">
+                  <Icon size={20} strokeWidth={1.6} />
+                </div>
+
+                {/* title */}
+                <h3 className="mt-5 font-serif text-[20px] font-medium leading-snug text-[color:var(--color-ink)] sm:text-[22px]">
+                  {w.title}
+                </h3>
+
+                {/* script note */}
+                <p className="mt-3 font-script text-lg leading-relaxed text-[color:var(--color-ink-soft)] sm:text-xl">
+                  {w.note}
+                </p>
+
+                {/* bottom hairline + flourish */}
+                <div className="mt-6 flex items-center gap-3">
+                  <span className="h-px flex-1 bg-[color:var(--color-mauve)]/20" />
+                  <span className="text-[color:var(--color-gold)]/60">✦</span>
+                  <span className="h-px flex-1 bg-[color:var(--color-mauve)]/20" />
+                </div>
+              </div>
+            </motion.div>
+          );
+        })}
       </div>
+
+      <motion.p
+        initial={{ opacity: 0, y: 12 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-60px" }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+        className="mx-auto mt-16 max-w-xl text-center font-script text-xl leading-relaxed text-[color:var(--color-ink-soft)]/75 sm:text-2xl"
+      >
+        and quietly — all the good things you haven't even thought to wish for yet.
+      </motion.p>
     </section>
   );
 }
+
 
 /* ---------- FINALE ---------- */
 function Finale() {
