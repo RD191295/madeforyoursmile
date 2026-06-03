@@ -521,7 +521,7 @@ function Letter() {
         <div className="mt-6 space-y-5 font-serif text-[17px] leading-[1.85] text-[color:var(--color-ink)] sm:text-lg">
           <p>
             I do not know yet all the small details of your life — the songs you replay, the
-            corners of the city you love, the way you hold a cup of tea on a quiet morning. But
+            corners of the city you love, the way you hold a cup of coffe on a quiet morning. But
             I am learning. And every little thing I learn makes me quietly grateful.
           </p>
           <p>
@@ -530,10 +530,16 @@ function Letter() {
             in itself.
           </p>
           <p>
+            One of my favourite memories so far is that afternoon at CCD. What was meant to be a
+            simple meeting somehow turned into hours of conversation, stories, and laughter.
+            Time moved much faster than either of us noticed, and I still find myself smiling
+            when I think about it.
+          </p>
+          <p>
             On your birthday, I do not want to promise the world. I only want to say this: I
             hope today feels soft. I hope you are surrounded by people who love you out loud. I
-            hope the year ahead is kind to you, and a little adventurous, and full of the small
-            joys you deserve.
+            hope the year ahead is kind to you, a little adventurous, and full of the small joys
+            you deserve.
           </p>
           <p>
             And quietly, sincerely — I hope I get to keep being a small good thing in your
